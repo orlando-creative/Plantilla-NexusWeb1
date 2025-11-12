@@ -40,7 +40,7 @@ body {
 
 .nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     max-width: 1200px;
     margin: auto;
@@ -55,7 +55,7 @@ body {
 
 .nav-menu {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.75rem;
     list-style: none;
 }
 
@@ -64,11 +64,18 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.2rem 0.4rem;
 }
 
 .nav-menu-link:hover,
 .nav-menu-link_active {
-    color: var(--color-gris);
+    color: var(--color-secundario);
+    background-color: var(--color-gris);
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ===============================
@@ -168,6 +175,31 @@ main {
 }
 
 /* ===============================
+    redes sociales
+================================ */
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+.redes-sociales-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-texto);
+    transition: color 0.3s ease;
+}
+.redes-sociales-link:hover {
+    color: var(--color-principal);
+}
+.icono {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===============================
     FOOTER
 ================================ */
 footer {
@@ -184,7 +216,7 @@ footer {
 ================================ */
 @media (max-width: 768px) {
     .nav-menu {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: 1rem;
     }
