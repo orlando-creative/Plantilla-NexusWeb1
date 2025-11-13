@@ -2,20 +2,7 @@
     PALETA DE COLORES (EDITABLE)
 ================================ */
 :root {
-    /* Gama de Azules (Default) */
-    /* --color-principal: #0078d4;   
-    --color-principal-hover: #005a9e;
-    --color-secundario: #f0f8ff;    
-    --color-acento: #ff8c00;          */
-
-    /* Gama de Verdes (Alternativa 1) */
-    
-    /* --color-principal: #28a745;
-    --color-principal-hover: #218838;
-    --color-secundario: #f0fff0;
-    --color-acento: #ffc107;
-     */
-    
+    /* ... (Variables de color sin cambios) ... */
     /* Gama de Grises/Negocios (Alternativa 2) */
     
     --color-principal: #343a40;
@@ -47,9 +34,9 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Comentario: Esta propiedad asegura que el padding y el borde se incluyan *dentro* del ancho y alto total de un elemento, simplificando el diseño. */
 }
-
+/* ... (Resto de estilos globales sin cambios) ... */
 html {
     scroll-behavior: smooth;
     font-size: 16px; /* Base para REM */
@@ -133,6 +120,7 @@ ul {
     text-align: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
+/* ... (Estilos de botones sin cambios) ... */
 
 .btn-primary {
     background-color: var(--color-principal);
@@ -158,21 +146,18 @@ ul {
 /* ===============================
     HEADER Y NAVEGACIÓN
 ================================ */
-/* ===============================
-    HEADER Y NAVEGACIÓN
-================================ */
 .header {
     background-color: var(--color-blanco);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    position: sticky;
+    position: sticky; /* Comentario: Mantiene la barra de navegación fija en la parte superior al hacer scroll. */
     top: 0;
     width: 100%;
     z-index: 1000;
 }
 
 .nav {
-    display: flex;
-    justify-content: space-between;
+    display: flex; /* Comentario: Usa Flexbox para alinear el logo y el menú horizontalmente. */
+    justify-content: space-between; /* Comentario: Empuja el logo a la izquierda y el menú a la derecha. */
     align-items: center;
     height: 4.5rem; /* 72px */
 }
@@ -218,7 +203,7 @@ ul {
 
 /* Checkbox invisible */
 .nav-toggle-checkbox {
-    display: none;
+    display: none; /* Comentario: Es la clave del "Checkbox Hack". Permanece invisible pero su estado (:checked) controla la visibilidad del menú con CSS puro. */
 }
 
 /* Botón Hamburguesa (Label) */
@@ -241,6 +226,7 @@ ul {
 /* ===============================
     SECCIÓN HERO (PORTADA)
 ================================ */
+/* ... (Resto de secciones sin cambios) ... */
 .hero {
     background-color: var(--color-secundario);
     padding: 6rem 1.5rem;
@@ -296,8 +282,8 @@ ul {
 .product-grid {
     display: grid;
     /* Columnas adaptables: mínimo 280px, máximo 1fr. 
-       Se ajustarán automáticamente. */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        Se ajustarán automáticamente. */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Comentario: 'auto-fit' crea tantas columnas de 280px como sea posible sin desbordar el contenedor. '1fr' asegura que las columnas se expandan para llenar el espacio restante. */
     gap: 2rem;
     margin-bottom: 2.5rem;
 }
@@ -377,7 +363,7 @@ ul {
     border-radius: 8px;
     box-shadow: var(--sombra-card);
 }
-
+/* ... (Resto de estilos de secciones sin cambios) ... */
 .mission-vision {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -513,6 +499,7 @@ ul {
 
 /* Tablets (hasta 992px) */
 @media (max-width: 992px) {
+    /* ... (Estilos sin cambios) ... */
     .about-grid,
     .contact-grid {
         grid-template-columns: 1fr; /* Apila las columnas */
@@ -534,6 +521,7 @@ ul {
 
 /* Móviles (hasta 768px) */
 @media (max-width: 768px) {
+    /* ... (Estilos sin cambios) ... */
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
     
@@ -544,43 +532,34 @@ ul {
         font-size: 2.25rem;
     }
 
-    /* Navegación Móvil (Apilado Simple SIN JS)
-      El .nav-toggle está oculto. Mostramos el menú apilado.
-    */
+    /* Ocultamos el modo "Apilado Simple" para usar el "Checkbox Hack" */
     .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-        padding: 1rem 1.5rem;
+        /* La navegación principal vuelve a ser flexbox con espacio entre elementos para que el logo y el botón hamburguesa se separen */
+        display: flex;
+        flex-direction: row; /* Importante: Vuelve a la disposición horizontal */
+        justify-content: space-between; /* Para separar el logo del botón hamburguesa */
+        align-items: center;
+        height: 4.5rem;
+        padding: 0 1.5rem; /* Ajuste para evitar que el padding se aplique doble */
     }
+    
     .logo {
-        width: 100%;
+        width: auto; /* Restablecemos el ancho para que el logo no ocupe todo */
     }
+
+    /* Ocultamos el menú aquí, se controlará con el Checkbox Hack */
     .nav-menu {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 1rem;
-        gap: 0;
-    }
-    .nav-menu-item {
-        width: 100%;
-    }
-    .nav-menu-link {
-        padding: 0.75rem 0.5rem;
-        border-radius: 0;
-        border-top: 1px solid var(--color-borde);
-    }
-    .nav-menu-item:first-child .nav-menu-link {
-        border-top: none;
+        display: none; 
     }
     
     .nav-toggle {
-        display: none; /* Mantenemos el apilado simple */
+        display: block; /* Muestra el botón hamburguesa */
     }
 }
 
 /* Móviles pequeños (hasta 480px) */
 @media (max-width: 480px) {
+    /* ... (Estilos sin cambios) ... */
     .container {
         padding: 0 1rem;
     }
@@ -606,8 +585,9 @@ ul {
         margin-right: 0;
     }
 }
+
 /* ===============================
-    RESPONSIVE NAVEGACIÓN (MÓVILES)
+    RESPONSIVE NAVEGACIÓN (MÓVILES) - Alinear a la DERECHA
 ================================ */
 
 @media (max-width: 768px) {
@@ -615,13 +595,22 @@ ul {
     .nav-toggle {
         display: block;
     }
-
-    /* Ocultamos el menú (se mostrará al hacer clic) */
+    
+    /* Hacemos visible el menú normal para que lo podamos posicionar */
     .nav-menu {
+        /* Restablecer display: flex para el posicionamiento absoluto */
+        display: flex; /* Añadido para que la posición absoluta funcione */
+        
         position: absolute;
-        top: 4.5rem; /* Altura del header */
-        left: 0;
-        width: 100%;
+        top: 4.5rem; /* Altura del header (72px). Determina dónde empieza el menú desplegable. */
+        
+        /* --- ARREGLO CLAVE --- */
+        right: 0; /* Pega el menú al borde DERECHO del viewport */
+        left: auto; /* Anula el left: 0 anterior si lo hubiera (en este caso lo estaba) */
+        width: 80%; /* Le damos un ancho, por ejemplo, 80% del móvil */
+        max-width: 300px; /* Evita que el menú sea demasiado ancho en tablets más grandes */
+        /* --------------------- */
+        
         background-color: var(--color-blanco);
         
         /* Oculto por defecto */
@@ -629,7 +618,7 @@ ul {
         opacity: 0;
         
         /* Efecto de despliegue */
-        transform-origin: top;
+        transform-origin: top right; /* Comentario: Cambiamos el origen de la transformación para que se despliegue desde la esquina superior derecha. */
         transform: scaleY(0);
         transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 
@@ -663,12 +652,12 @@ ul {
     
     /* ...animamos el botón a una 'X' */
     .nav-toggle-checkbox:checked ~ .nav-toggle .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg); /* Comentario: Mueve la primera barra 8px hacia abajo y la gira 45 grados (para formar la X). */
     }
     .nav-toggle-checkbox:checked ~ .nav-toggle .bar:nth-child(2) {
-        opacity: 0;
+        opacity: 0; /* Comentario: Oculta la barra del centro. */
     }
     .nav-toggle-checkbox:checked ~ .nav-toggle .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg); /* Comentario: Mueve la tercera barra 8px hacia arriba y la gira -45 grados (para formar la X). */
     }
 }
